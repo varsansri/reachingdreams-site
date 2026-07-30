@@ -1,21 +1,62 @@
-/* Reaching Dreams — product grid, filtering, and quick-view.
-   Data is baked at build time into products.json (exported from Shopify). */
+/* Reaching Dreams — static mirror of the Shopify homepage.
+   Product data is baked into products.json at build time. */
 
-const grid = document.getElementById('grid');
-const empty = document.getElementById('empty');
 const modal = document.getElementById('modal');
 const modalBody = document.getElementById('modalBody');
+const STORE = 'https://xu3h0v-gg.myshopify.com';
 
-const inr = (n) =>
-  '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+const inr = (n) => '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
 
 let PRODUCTS = [];
-let filter = 'all';
 
-function cardMarkup(p, i) {
-  const off = p.compareAt
-    ? Math.round(((p.compareAt - p.price) / p.compareAt) * 100)
-    : 0;
+/* ------------------------------------------------------------ countdown */
+(function countdown() {
+  const el = document.getElementById('timer');
+  if (!el) return;
+  const deadline = Date.parse(el.dataset.deadline);
+  if (Number.isNaN(deadline)) return el.setAttribute('hidden', '');
+
+  const pad = (n) => String(n).padStart(2, '0');
+
+  function tick() {
+    const diff = deadline - Date.now();
+    if (diff <= 0) {
+      el.innerHTML = '<span class="drop__live">LIVE NOW</span>';
+      return true;
+    }
+    const s = Math.floor(diff / 1000);
+    const map = {
+      days: Math.floor(s / 86400),
+      hours: Math.floor((s % 86400) / 3600),
+      mins: Math.floor((s % 3600) / 60),
+      secs: s % 60,
+    };
+    for (const [unit, v] of Object.entries(map)) {
+      const node = el.querySelector(`[data-unit="${unit}"]`);
+      if (node) node.textContent = pad(v);
+    }
+    return false;
+  }
+
+  if (tick()) return;
+  const id = setInterval(() => { if (tick()) clearInterval(id); }, 1000);
+})();
+
+/* ------------------------------------------------------------- rendering */
+const COLLECTIONS = [
+  { tag: 'new-drops', title: 'New Drops' },
+  { tag: 'bestsellers', title: 'Bestsellers' },
+  { tag: 'oversized', title: 'Oversized Fit' },
+  { tag: 'graphic', title: 'Graphic Tees' },
+];
+
+function byTag(tag) {
+  return PRODUCTS.filter((p) => p.tags.includes(tag));
+}
+
+function cardMarkup(p) {
+  const i = PRODUCTS.indexOf(p);
+  const off = p.compareAt ? Math.round(((p.compareAt - p.price) / p.compareAt) * 100) : 0;
   const imgs = p.images.length ? p.images : [''];
   return `
     <button class="card" data-i="${i}" aria-label="View ${p.title}">
@@ -32,24 +73,37 @@ function cardMarkup(p, i) {
     </button>`;
 }
 
-function render() {
-  const list = PRODUCTS.filter(
-    (p) => filter === 'all' || p.tags.includes(filter)
-  );
-  grid.innerHTML = list
-    .map((p) => cardMarkup(p, PRODUCTS.indexOf(p)))
-    .join('');
-  empty.hidden = list.length > 0;
+function renderGrids() {
+  document.querySelectorAll('.grid[data-collection]').forEach((el) => {
+    const list = byTag(el.dataset.collection);
+    el.innerHTML = list.map(cardMarkup).join('') ||
+      '<p style="color:#5a5a5a">Nothing here yet.</p>';
+  });
 }
 
+function renderCategories() {
+  const wrap = document.getElementById('cats');
+  if (!wrap) return;
+  wrap.innerHTML = COLLECTIONS.map((c) => {
+    const items = byTag(c.tag);
+    const img = items[0]?.images[0] || '';
+    const handle = c.tag === 'oversized' ? 'oversized-fit'
+      : c.tag === 'graphic' ? 'graphic-tees' : c.tag;
+    return `
+      <a class="tile" href="${STORE}/collections/${handle}" target="_blank" rel="noopener">
+        <img src="${img}" alt="${c.title}" loading="lazy">
+        <span class="tile__label">${c.title}
+          <span class="tile__count">${items.length} product${items.length === 1 ? '' : 's'}</span>
+        </span>
+      </a>`;
+  }).join('');
+}
+
+/* ----------------------------------------------------------- quick view */
 function openProduct(p) {
-  const off = p.compareAt
-    ? Math.round(((p.compareAt - p.price) / p.compareAt) * 100)
-    : 0;
+  const off = p.compareAt ? Math.round(((p.compareAt - p.price) / p.compareAt) * 100) : 0;
   modalBody.innerHTML = `
-    <div class="modal__media">
-      <img src="${p.images[0] || ''}" alt="${p.title}">
-    </div>
+    <div class="modal__media"><img src="${p.images[0] || ''}" alt="${p.title}"></div>
     <div class="modal__info">
       <h3>${p.title}</h3>
       <p class="modal__price">
@@ -64,38 +118,34 @@ function openProduct(p) {
   if (typeof modal.showModal === 'function') modal.showModal();
 }
 
-grid.addEventListener('click', (e) => {
+document.addEventListener('click', (e) => {
   const card = e.target.closest('.card');
   if (card) openProduct(PRODUCTS[Number(card.dataset.i)]);
 });
-
 document.getElementById('close').addEventListener('click', () => modal.close());
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) modal.close(); // click outside the panel
-});
+modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
 
-document.querySelectorAll('.chip').forEach((chip) => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.chip').forEach((c) => c.classList.remove('is-active'));
-    chip.classList.add('is-active');
-    filter = chip.dataset.filter;
-    render();
-  });
+/* --------------------------------------------------------------- signup */
+document.getElementById('signupForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const note = document.getElementById('signupNote');
+  note.hidden = false;
+  note.textContent = 'This showcase site has no mailing list — sign up on the store to get drop alerts.';
 });
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 
+/* ----------------------------------------------------------------- boot */
 fetch('products.json')
-  .then((r) => {
-    if (!r.ok) throw new Error(`products.json ${r.status}`);
-    return r.json();
-  })
+  .then((r) => { if (!r.ok) throw new Error(`products.json ${r.status}`); return r.json(); })
   .then((data) => {
     PRODUCTS = data;
-    render();
+    renderCategories();
+    renderGrids();
   })
   .catch((err) => {
     console.error(err);
-    grid.innerHTML =
-      '<p style="color:#6b6b6b">Could not load products. Visit the store directly.</p>';
+    document.querySelectorAll('.grid').forEach((el) => {
+      el.innerHTML = '<p style="color:#5a5a5a">Could not load products. Visit the store directly.</p>';
+    });
   });

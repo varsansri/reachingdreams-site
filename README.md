@@ -27,13 +27,25 @@ shopify store execute -s xu3h0v-gg.myshopify.com -j \
 
 Commit the updated `products.json` and Pages redeploys automatically.
 
+## Mirrors the Shopify homepage
+
+Section order and copy match `templates/index.json` on theme `#164834902228`:
+
+`announcement → hero → ticker → drop countdown → category tiles → NEW DROPS → BESTSELLERS → story → signup`
+
+Same palette too — `#FFC300` CTAs, `#E63946` sale badges, 6px radii, `#111` ink.
+
+Differences are only where a static site cannot follow: no cart or checkout
+(buy links hand off to Shopify), and the signup form has no mailing list behind it.
+
 ## Features
 
-- Responsive product grid with category filtering (All / New Drops / Bestsellers / Oversized / Graphic)
+- Live countdown to the next drop, flipping to "LIVE NOW" at zero
+- Category tiles and two product rows, populated from `products.json`
 - Hover swaps to the second product image
 - Quick-view dialog with description, size run, and a buy link
-- Automatic discount badges calculated from compare-at prices
-- Animated ticker and film-grain hero
+- Discount badges calculated from compare-at prices
+- Animated ticker and film-grain drop section
 - Honours `prefers-reduced-motion`; keyboard accessible with a skip link
 
 ## Related
