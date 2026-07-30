@@ -5,6 +5,15 @@ Completely independent of Shopify — no Liquid, no server, no build step.
 
 **Live → https://varsansri.github.io/reachingdreams-site/**
 
+## Links
+
+| | |
+|---|---|
+| **Live Shopify store** | https://xu3h0v-gg.myshopify.com |
+| Shopify admin | https://admin.shopify.com/store/xu3h0v-gg |
+| Theme source repo | https://github.com/varsansri/reachingdreams-store |
+| This site repo | https://github.com/varsansri/reachingdreams-site |
+
 ## How it works
 
 - `index.html` / `styles.css` / `app.js` — plain HTML, CSS, and vanilla JS. No frameworks, no dependencies.
