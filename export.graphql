@@ -1,0 +1,11 @@
+query {
+  products(first: 20) {
+    nodes {
+      title handle descriptionHtml tags
+      priceRangeV2 { minVariantPrice { amount } maxVariantPrice { amount } }
+      compareAtPriceRange { maxVariantCompareAtPrice { amount } }
+      media(first: 3) { nodes { ... on MediaImage { image { url width height altText } } } }
+      options { name optionValues { name } }
+    }
+  }
+}
