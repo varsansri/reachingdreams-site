@@ -3,133 +3,106 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reaching Dreams — Men's Graphic Tees, Printed in India</title>
-<meta name="description" content="Graphic tees for people building something. Printed to order in India. Free shipping over ₹999, COD available, sizes S–3XL.">
-<meta name="theme-color" content="#0A0A0A">
+<title>Reaching Dreams — Oversized T-Shirts, Graphic Tees & Streetwear for Men</title>
+<meta name="description" content="Reaching Dreams is a homegrown Indian streetwear label. Heavyweight oversized t-shirts, graphic tees and hoodies. COD available, 7-day easy returns, free shipping across India.">
 <link rel="icon" href="assets/rd-favicon.png">
-<meta property="og:title" content="Reaching Dreams — Men's Graphic Tees">
-<meta property="og:description" content="Graphic tees for people building something. Printed to order in India.">
-<meta property="og:image" content="assets/rd-logo-on-dark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="home">
 
-<a class="skip" href="#new-drops">Skip to products</a>
+<div id="chrome-header"></div>
 
-<!-- announcement bar -->
-<div class="announce">FLAT ₹200 OFF ON YOUR FIRST ORDER — CODE DREAM200</div>
-
-<!-- header -->
-<header class="nav">
-  <a class="nav__logo" href="#top"><img src="assets/rd-logo-on-light.png" alt="Reaching Dreams"></a>
-  <nav class="nav__links">
-    <a href="#categories">Shop</a>
-    <a href="#new-drops">New Drops</a>
-    <a href="#bestsellers">Bestsellers</a>
-    <a class="nav__cta" href="https://xu3h0v-gg.myshopify.com" target="_blank" rel="noopener">Store ↗</a>
-  </nav>
-</header>
-
-<main id="top">
-
-  <!-- 1 ── hero -->
+<main>
   <section class="hero">
-    <img class="hero__bg" src="assets/hero.jpg" alt="" aria-hidden="true">
-    <div class="hero__scrim" aria-hidden="true"></div>
-    <div class="hero__inner">
-      <h1>NEW DROP IS LIVE</h1>
-      <p class="hero__sub">Men’s graphic tees, printed in India. Free shipping over ₹999.</p>
-      <a class="btn btn--primary" href="#new-drops">SHOP THE DROP</a>
+    <button class="car-arrow prev" data-car="hero" data-dir="-1" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="car-arrow next" data-car="hero" data-dir="1" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="hero-track" id="hero">
+      <a class="hero-slide" href="collection.html?tag=new-drops">
+        <img src="assets/products/dream-loud-oversized-tee-1.jpg" alt="Dream Loud oversized tee">
+        <span class="hero-copy">
+          <span class="kicker">All new drop</span>
+          <h2>Dream<br>Loud</h2>
+          <span class="cta">Shop new in</span>
+        </span>
+      </a>
+      <a class="hero-slide" href="collection.html?tag=oversized">
+        <img src="assets/products/founder-era-heavyweight-tee-1.jpg" alt="Founder Era heavyweight tee">
+        <span class="hero-copy">
+          <span class="kicker">240 GSM heavyweight</span>
+          <h2>Oversized<br>Fit</h2>
+          <span class="cta">Tap to explore</span>
+        </span>
+      </a>
+      <a class="hero-slide" href="collection.html?tag=bestsellers">
+        <img src="assets/products/0-to-1-graphic-tee-1.jpg" alt="0 to 1 graphic tee">
+        <span class="hero-copy">
+          <span class="kicker">Most wanted</span>
+          <h2>Best<br>Sellers</h2>
+          <span class="cta">Shop the top 8</span>
+        </span>
+      </a>
+    </div>
+    <div class="dots" data-dots="hero"></div>
+  </section>
+
+  <section class="usp">
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9 8h6M9 11h6M11 8v8l4-4"/></svg>
+      <span><b>Cash on delivery</b><br>available across India</span>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 4v5h-5"/></svg>
+      <span><b>7 days easy returns</b><br>&amp; exchanges</span>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
+      <span><b>Free &amp; fast shipping</b><br>on orders above ₹999</span>
     </div>
   </section>
 
-  <!-- 2 ── ticker -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__track">
-      <span>FREE SHIPPING OVER ₹999 • CASH ON DELIVERY • 7-DAY RETURNS • SIZES S–3XL • PRINTED IN INDIA •&nbsp;</span>
-      <span>FREE SHIPPING OVER ₹999 • CASH ON DELIVERY • 7-DAY RETURNS • SIZES S–3XL • PRINTED IN INDIA •&nbsp;</span>
+  <div class="wrap">
+    <h2 class="section-head">New In</h2>
+    <div class="banners">
+      <a class="banner" href="collection.html?tag=new-drops">
+        <img src="assets/products/ship-it-oversized-tee-1.jpg" alt="">
+        <div>
+          <h3>For the ones<br>who ship</h3>
+          <p>New drop — oversized</p>
+        </div>
+      </a>
+      <a class="banner" href="collection.html?tag=graphic">
+        <img src="assets/products/not-today-graphic-tee-1.jpg" alt="">
+        <div>
+          <h3>Not today,<br>not ever</h3>
+          <p>Graphic tees from ₹799</p>
+        </div>
+      </a>
     </div>
+
+    <h2 class="section-head">New Arrivals</h2>
+    <div class="rail-wrap">
+      <div class="rail" id="rail-new"></div>
+    </div>
+
+    <h2 class="section-head">Categories</h2>
+    <div class="cats" id="cats"></div>
+
+    <h2 class="section-head">Bestsellers</h2>
+    <div class="grid" id="grid-best"></div>
   </div>
 
-  <!-- 3 ── drop countdown -->
-  <section class="drop">
-    <img class="drop__bg" src="assets/story.jpg" alt="" aria-hidden="true">
-    <div class="drop__scrim" aria-hidden="true"></div>
-    <div class="drop__grain" aria-hidden="true"></div>
-    <div class="drop__inner">
-      <p class="eyebrow"><span class="dot"></span>Next drop</p>
-      <h2 class="drop__heading">SEASON 01</h2>
-      <p class="drop__sub">Six new designs. Limited run. Once they’re gone, they’re gone.</p>
-      <div class="drop__timer" id="timer" data-deadline="2026-08-15T18:00:00+05:30" role="timer">
-        <div class="drop__unit"><span class="drop__num" data-unit="days">--</span><span class="drop__label">days</span></div>
-        <div class="drop__unit"><span class="drop__num" data-unit="hours">--</span><span class="drop__label">hours</span></div>
-        <div class="drop__unit"><span class="drop__num" data-unit="mins">--</span><span class="drop__label">mins</span></div>
-        <div class="drop__unit"><span class="drop__num" data-unit="secs">--</span><span class="drop__label">secs</span></div>
-      </div>
-      <a class="btn btn--primary" href="#signup">Notify me</a>
-    </div>
-  </section>
-
-  <!-- 4 ── category tiles -->
-  <section class="cats" id="categories">
-    <h2 class="sec-title">SHOP BY CATEGORY</h2>
-    <div class="cats__grid" id="cats"></div>
-  </section>
-
-  <!-- 5 ── new drops -->
-  <section class="shop" id="new-drops">
-    <div class="shop__head">
-      <h3 class="sec-title">NEW DROPS</h3>
-      <a class="link" href="https://xu3h0v-gg.myshopify.com/collections/new-drops" target="_blank" rel="noopener">View all</a>
-    </div>
-    <div class="grid" data-collection="new-drops"></div>
-  </section>
-
-  <!-- 6 ── bestsellers -->
-  <section class="shop" id="bestsellers">
-    <div class="shop__head">
-      <h3 class="sec-title">BESTSELLERS</h3>
-      <a class="link" href="https://xu3h0v-gg.myshopify.com/collections/bestsellers" target="_blank" rel="noopener">Shop all</a>
-    </div>
-    <div class="grid" data-collection="bestsellers"></div>
-  </section>
-
-  <!-- 7 ── brand story -->
-  <section class="story" id="story">
-    <div class="story__media"><img src="assets/story.jpg" alt="Reaching Dreams"></div>
-    <div class="story__copy">
-      <p class="eyebrow">THE BRAND</p>
-      <h2>For the ones still building.</h2>
-      <p>Reaching Dreams makes tees for the 22-year-old on their third side project and the founder who still codes at 2am. Designs that say something without shouting it. Made in India, for India.</p>
-      <a class="btn btn--dark" href="#new-drops">Shop now</a>
-    </div>
-  </section>
-
-  <!-- 8 ── email signup -->
-  <section class="signup" id="signup">
-    <h2>GET FIRST ACCESS TO DROPS</h2>
-    <p>New designs every month and the good ones sell out. No spam — just drops.</p>
-    <form class="signup__form" id="signupForm">
-      <label class="sr-only" for="email">Email address</label>
-      <input id="email" type="email" required placeholder="you@example.com" autocomplete="email">
-      <button class="btn btn--primary" type="submit">Sign up</button>
-    </form>
-    <p class="signup__note" id="signupNote" hidden></p>
-  </section>
-
+  <div class="band">Homegrown Indian brand</div>
+  <p class="happy">Over <b>10,000</b> Happy Customers</p>
 </main>
 
-<footer class="foot">
-  <img src="assets/rd-logo-on-dark.png" alt="Reaching Dreams">
-  <p>© <span id="yr"></span> Reaching Dreams. Printed in India.</p>
-  <p class="foot__note">Showcase site — purchases are completed on the Shopify store.</p>
-</footer>
-
-<dialog class="modal" id="modal">
-  <button class="modal__close" id="close" aria-label="Close">&times;</button>
-  <div class="modal__body" id="modalBody"></div>
-</dialog>
-
+<div id="chrome-footer"></div>
 <script src="app.js"></script>
 </body>
 </html>

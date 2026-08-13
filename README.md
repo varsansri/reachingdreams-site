@@ -36,26 +36,37 @@ shopify store execute -s xu3h0v-gg.myshopify.com -j \
 
 Commit the updated `products.json` and Pages redeploys automatically.
 
-## Mirrors the Shopify homepage
+## Pages
 
-Section order and copy match `templates/index.json` on theme `#164834902228`:
+| File | What it is |
+|---|---|
+| `index.html` | Homepage — hero carousel, USP strip, New In banners, New Arrivals rail, category tiles, bestsellers grid |
+| `collection.html` | Listing page with faceted left rail. Accepts `?tag=`, `?q=`, `?wish=1` |
+| `product.html` | Product page. Accepts `?p=<handle>` |
 
-`announcement → hero → ticker → drop countdown → category tiles → NEW DROPS → BESTSELLERS → story → signup`
+Header, nav drawer, bag drawer and footer are rendered once from `app.js` so all
+three pages share one copy.
 
-Same palette too — `#FFC300` CTAs, `#E63946` sale badges, 6px radii, `#111` ink.
+## Layout system
 
-Differences are only where a static site cannot follow: no cart or checkout
-(buy links hand off to Shopify), and the signup form has no mailing list behind it.
+Built on the large-format Indian D2C apparel pattern: centered logo with gender
+tabs in the header, a peek carousel (78% wide slides with the next one showing),
+mint USP band, uppercase letter-spaced section headings, 3:4 product cards with
+a fit badge top-left and a fabric badge bottom-left, and a counted facet rail
+(size chips, colour swatches, category / fit / theme checkboxes) on the PLP.
+
+Every colour resolves from `--accent` and the tokens at the top of `styles.css` —
+change `--accent` alone and the whole site re-skins.
 
 ## Features
 
-- Live countdown to the next drop, flipping to "LIVE NOW" at zero
-- Category tiles and two product rows, populated from `products.json`
-- Hover swaps to the second product image
-- Quick-view dialog with description, size run, and a buy link
+- Faceted filtering with live counts that respect the other active facets
+- Sort by relevance / new / price
+- Bag drawer in `localStorage`; checkout hands off to Shopify
+- Wishlist toggles on any card, `collection.html?wish=1` lists them
+- Search box filters title, category, theme and description
 - Discount badges calculated from compare-at prices
-- Animated ticker and film-grain drop section
-- Honours `prefers-reduced-motion`; keyboard accessible with a skip link
+- Auto-advancing hero with arrows and dots; full mobile layout with a filter drawer
 
 ## Related
 

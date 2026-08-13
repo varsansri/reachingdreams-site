@@ -1,194 +1,130 @@
 [
- {
-  "title": "Built Different Oversized Tee",
-  "handle": "built-different-oversized-tee",
-  "desc": "Drop-shoulder oversized fit in 240 GSM heavyweight cotton. Boxy through the body with a wider neck rib that holds its shape wash after wash.",
-  "price": 1099.0,
-  "compareAt": 1499.0,
-  "tags": [
-   "new-drops",
-   "oversized"
-  ],
-  "images": [
-   "assets/products/built-different-oversized-tee-1.jpg",
-   "assets/products/built-different-oversized-tee-2.jpg"
-  ],
-  "sizes": [
-   "S",
-   "M",
-   "L",
-   "XL",
-   "XXL",
-   "3XL"
-  ],
-  "url": "https://xu3h0v-gg.myshopify.com/products/built-different-oversized-tee"
- },
- {
-  "title": "Hustle Mode: On Classic Tee",
-  "handle": "hustle-mode-on-classic-tee",
-  "desc": "Everyday regular fit in 180 GSM bio-washed combed cotton. Soft from the first wear, no break-in period.",
-  "price": 899.0,
-  "compareAt": null,
-  "tags": [
-   "graphic",
-   "new-drops"
-  ],
-  "images": [
-   "assets/products/hustle-mode-on-classic-tee-1.jpg",
-   "assets/products/hustle-mode-on-classic-tee-2.jpg"
-  ],
-  "sizes": [
-   "S",
-   "M",
-   "L",
-   "XL",
-   "XXL",
-   "3XL"
-  ],
-  "url": "https://xu3h0v-gg.myshopify.com/products/hustle-mode-on-classic-tee"
- },
- {
-  "title": "0 to 1 Graphic Tee",
-  "handle": "0-to-1-graphic-tee",
-  "desc": "For the part nobody claps for. Screen-printed front graphic on 180 GSM combed cotton with a taped neck seam.",
-  "price": 949.0,
-  "compareAt": 1299.0,
-  "tags": [
-   "bestsellers",
-   "graphic"
-  ],
-  "images": [
-   "assets/products/0-to-1-graphic-tee-1.jpg",
-   "assets/products/0-to-1-graphic-tee-2.jpg"
-  ],
-  "sizes": [
-   "S",
-   "M",
-   "L",
-   "XL",
-   "XXL",
-   "3XL"
-  ],
-  "url": "https://xu3h0v-gg.myshopify.com/products/0-to-1-graphic-tee"
- },
- {
-  "title": "Ship It Oversized Tee",
-  "handle": "ship-it-oversized-tee",
-  "desc": "Relaxed drop-shoulder cut, 240 GSM. Prewashed so it will not shrink out of shape on you.",
-  "price": 1099.0,
-  "compareAt": null,
-  "tags": [
-   "new-drops",
-   "oversized"
-  ],
-  "images": [
-   "assets/products/ship-it-oversized-tee-1.jpg",
-   "assets/products/ship-it-oversized-tee-2.jpg"
-  ],
-  "sizes": [
-   "S",
-   "M",
-   "L",
-   "XL",
-   "XXL",
-   "3XL"
-  ],
-  "url": "https://xu3h0v-gg.myshopify.com/products/ship-it-oversized-tee"
- },
- {
-  "title": "Chai & Code Classic Tee",
-  "handle": "chai-code-classic-tee",
-  "desc": "Two things that keep it running. Regular fit, 180 GSM combed cotton, side-seamed for a cleaner drape.",
-  "price": 899.0,
-  "compareAt": null,
-  "tags": [
-   "bestsellers",
-   "graphic"
-  ],
-  "images": [
-   "assets/products/chai-code-classic-tee-1.jpg",
-   "assets/products/chai-code-classic-tee-2.jpg"
-  ],
-  "sizes": [
-   "S",
-   "M",
-   "L",
-   "XL",
-   "XXL",
-   "3XL"
-  ],
-  "url": "https://xu3h0v-gg.myshopify.com/products/chai-code-classic-tee"
- },
- {
-  "title": "Founder Era Heavyweight Tee",
-  "handle": "founder-era-heavyweight-tee",
-  "desc": "Our heaviest at 260 GSM. Structured, opaque, and built to survive a few hundred washes.",
-  "price": 1299.0,
-  "compareAt": 1699.0,
-  "tags": [
-   "bestsellers",
-   "oversized"
-  ],
-  "images": [
-   "assets/products/founder-era-heavyweight-tee-1.jpg",
-   "assets/products/founder-era-heavyweight-tee-2.jpg"
-  ],
-  "sizes": [
-   "S",
-   "M",
-   "L",
-   "XL",
-   "XXL",
-   "3XL"
-  ],
-  "url": "https://xu3h0v-gg.myshopify.com/products/founder-era-heavyweight-tee"
- },
- {
-  "title": "Not Today Graphic Tee",
-  "handle": "not-today-graphic-tee",
-  "desc": "Says it before you have to. 180 GSM combed cotton with a soft-hand print that will not crack.",
-  "price": 799.0,
-  "compareAt": null,
-  "tags": [
-   "graphic",
-   "new-drops"
-  ],
-  "images": [
-   "assets/products/not-today-graphic-tee-1.jpg",
-   "assets/products/not-today-graphic-tee-2.jpg"
-  ],
-  "sizes": [
-   "S",
-   "M",
-   "L",
-   "XL",
-   "XXL",
-   "3XL"
-  ],
-  "url": "https://xu3h0v-gg.myshopify.com/products/not-today-graphic-tee"
- },
- {
-  "title": "Dream Loud Oversized Tee",
-  "handle": "dream-loud-oversized-tee",
-  "desc": "Oversized fit, 240 GSM, with an oversized back print. Wear it with everything.",
-  "price": 1049.0,
-  "compareAt": null,
-  "tags": [
-   "bestsellers",
-   "oversized"
-  ],
-  "images": [
-   "assets/products/dream-loud-oversized-tee-1.jpg",
-   "assets/products/dream-loud-oversized-tee-2.jpg"
-  ],
-  "sizes": [
-   "S",
-   "M",
-   "L",
-   "XL",
-   "XXL",
-   "3XL"
-  ],
-  "url": "https://xu3h0v-gg.myshopify.com/products/dream-loud-oversized-tee"
- }
+  {
+    "title": "Built Different Oversized Tee",
+    "handle": "built-different-oversized-tee",
+    "desc": "Drop-shoulder oversized fit in 240 GSM heavyweight cotton. Boxy through the body with a wider neck rib that holds its shape wash after wash.",
+    "price": 1099.0,
+    "compareAt": 1499.0,
+    "tags": ["new-drops", "oversized"],
+    "images": ["assets/products/built-different-oversized-tee-1.jpg"],
+    "sizes": ["S", "M", "L", "XL", "XXL", "3XL"],
+    "color": "Black",
+    "fit": "Oversized Fit",
+    "category": "Oversized T-Shirts",
+    "theme": "Reaching Dreams",
+    "fabric": "Premium Heavy Gauge Fabric",
+    "url": "https://xu3h0v-gg.myshopify.com/products/built-different-oversized-tee"
+  },
+  {
+    "title": "Hustle Mode: On Classic Tee",
+    "handle": "hustle-mode-on-classic-tee",
+    "desc": "Everyday regular fit in 180 GSM bio-washed combed cotton. Soft from the first wear, no break-in period.",
+    "price": 899.0,
+    "compareAt": null,
+    "tags": ["graphic", "new-drops"],
+    "images": ["assets/products/hustle-mode-on-classic-tee-1.jpg"],
+    "sizes": ["S", "M", "L", "XL", "XXL", "3XL"],
+    "color": "Black",
+    "fit": "Oversized Fit",
+    "category": "T-Shirts",
+    "theme": "Hustle Club",
+    "fabric": "Bio-Washed Combed Cotton",
+    "url": "https://xu3h0v-gg.myshopify.com/products/hustle-mode-on-classic-tee"
+  },
+  {
+    "title": "0 to 1 Graphic Tee",
+    "handle": "0-to-1-graphic-tee",
+    "desc": "For the part nobody claps for. Screen-printed front graphic on 180 GSM combed cotton with a taped neck seam.",
+    "price": 949.0,
+    "compareAt": 1299.0,
+    "tags": ["bestsellers", "graphic"],
+    "images": ["assets/products/0-to-1-graphic-tee-1.jpg"],
+    "sizes": ["S", "M", "L", "XL", "XXL", "3XL"],
+    "color": "White",
+    "fit": "Relaxed Fit",
+    "category": "T-Shirts",
+    "theme": "Founder Era",
+    "fabric": "Combed Cotton",
+    "url": "https://xu3h0v-gg.myshopify.com/products/0-to-1-graphic-tee"
+  },
+  {
+    "title": "Ship It Oversized Tee",
+    "handle": "ship-it-oversized-tee",
+    "desc": "Built for the ones who post the work, not the plan. 240 GSM heavyweight cotton with a drop shoulder and boxy hem.",
+    "price": 1099.0,
+    "compareAt": null,
+    "tags": ["new-drops", "oversized"],
+    "images": ["assets/products/ship-it-oversized-tee-1.jpg"],
+    "sizes": ["S", "M", "L", "XL", "XXL", "3XL"],
+    "color": "Grey",
+    "fit": "Oversized Fit",
+    "category": "Oversized T-Shirts",
+    "theme": "Reaching Dreams",
+    "fabric": "Premium Heavy Gauge Fabric",
+    "url": "https://xu3h0v-gg.myshopify.com/products/ship-it-oversized-tee"
+  },
+  {
+    "title": "Chai & Code Classic Tee",
+    "handle": "chai-code-classic-tee",
+    "desc": "Two things that keep the night running. Regular fit, 180 GSM bio-washed combed cotton, side-seamed.",
+    "price": 899.0,
+    "compareAt": null,
+    "tags": ["bestsellers", "graphic"],
+    "images": ["assets/products/chai-code-classic-tee-1.jpg"],
+    "sizes": ["S", "M", "L", "XL", "XXL", "3XL"],
+    "color": "White",
+    "fit": "Relaxed Fit",
+    "category": "T-Shirts",
+    "theme": "Hustle Club",
+    "fabric": "Bio-Washed Combed Cotton",
+    "url": "https://xu3h0v-gg.myshopify.com/products/chai-code-classic-tee"
+  },
+  {
+    "title": "Founder Era Heavyweight Tee",
+    "handle": "founder-era-heavyweight-tee",
+    "desc": "The one you wear on the days that decide it. 240 GSM heavyweight cotton, drop shoulder, structured neck rib.",
+    "price": 1299.0,
+    "compareAt": 1699.0,
+    "tags": ["bestsellers", "oversized"],
+    "images": ["assets/products/founder-era-heavyweight-tee-1.jpg"],
+    "sizes": ["S", "M", "L", "XL", "XXL", "3XL"],
+    "color": "Black",
+    "fit": "Oversized Fit",
+    "category": "Oversized T-Shirts",
+    "theme": "Founder Era",
+    "fabric": "Premium Heavy Gauge Fabric",
+    "url": "https://xu3h0v-gg.myshopify.com/products/founder-era-heavyweight-tee"
+  },
+  {
+    "title": "Not Today Graphic Tee",
+    "handle": "not-today-graphic-tee",
+    "desc": "Quitting is scheduled for never. Screen-printed graphic on 180 GSM combed cotton, taped neck seam.",
+    "price": 799.0,
+    "compareAt": 1099.0,
+    "tags": ["graphic", "new-drops"],
+    "images": ["assets/products/not-today-graphic-tee-1.jpg"],
+    "sizes": ["S", "M", "L", "XL", "XXL", "3XL"],
+    "color": "Grey",
+    "fit": "Relaxed Fit",
+    "category": "T-Shirts",
+    "theme": "Hustle Club",
+    "fabric": "Combed Cotton",
+    "url": "https://xu3h0v-gg.myshopify.com/products/not-today-graphic-tee"
+  },
+  {
+    "title": "Dream Loud Oversized Tee",
+    "handle": "dream-loud-oversized-tee",
+    "desc": "Circle-crest print, washed finish. 240 GSM heavyweight cotton cut boxy with a drop shoulder.",
+    "price": 1049.0,
+    "compareAt": null,
+    "tags": ["bestsellers", "oversized"],
+    "images": ["assets/products/dream-loud-oversized-tee-1.jpg"],
+    "sizes": ["S", "M", "L", "XL", "XXL", "3XL"],
+    "color": "Black",
+    "fit": "Oversized Fit",
+    "category": "Oversized T-Shirts",
+    "theme": "Reaching Dreams",
+    "fabric": "Premium Heavy Gauge Fabric",
+    "url": "https://xu3h0v-gg.myshopify.com/products/dream-loud-oversized-tee"
+  }
 ]
