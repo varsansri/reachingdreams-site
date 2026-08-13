@@ -32,6 +32,11 @@ const icon = {
 function renderChrome() {
   const bagCount = store.bag.reduce((n, l) => n + l.qty, 0);
   document.getElementById('chrome-header').innerHTML = `
+  <div class="announce">
+    <span>Free shipping on orders above ₹999 · Cash on delivery available</span>
+    <a href="collection.html?tag=new-drops">Shop new drop</a>
+  </div>
+
   <header class="header">
     <div class="header-left">
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
