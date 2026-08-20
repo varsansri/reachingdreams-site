@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Reaching Dreams — Gateway hero preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: #fff;
+    color: #0a0a0a;
+  }
+
+  /* ------------------------------------------------------- fake store header */
+  .bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 4vw, 2.5rem);
+    height: 72px;
+    padding-inline: clamp(1rem, 4vw, 3rem);
+    background: #fff;
+    border-bottom: 1px solid #dedede;
+  }
+
+  .bar__nav { display: flex; gap: clamp(0.9rem, 3vw, 2rem); }
+
+  .bar__nav a {
+    font-size: 0.875rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0a0a0a;
+    text-decoration: none;
+  }
+
+  .bar__nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  .bar__logo {
+    margin-inline-start: auto;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-size: 1rem;
+  }
+
+  /* ------------------------------------------------------------------- gate */
+  .rd-gate {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    background: #0a0a0a;
+    color: #fff;
+    min-height: 460px;
+    height: calc(100svh - 72px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .rd-gate.is-leaving { opacity: 0; transform: translateY(-24px); pointer-events: none; }
+  .rd-gate.is-passed { display: none; }
+
+  .rd-gate__media { position: absolute; inset: 0; z-index: 0; }
+  .rd-gate__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .rd-gate__scrim {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom, rgb(0 0 0 / 12%) 0%, transparent 30%, transparent 55%, rgb(0 0 0 / 38%) 100%),
+      rgb(0 0 0 / 20%);
+  }
+
+  .rd-gate__doors {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-inline: clamp(1rem, 5vw, 5rem);
+    pointer-events: none;
+  }
+
+  .rd-gate__door {
+    pointer-events: auto;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: clamp(0.6rem, 1.4vw, 0.95rem) clamp(1.4rem, 3vw, 2.6rem);
+    border: 3px solid currentcolor;
+    color: #fff;
+    background: rgb(10 10 10 / 35%);
+    backdrop-filter: blur(4px);
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .rd-gate__door:hover,
+  .rd-gate__door:focus-visible {
+    color: #0a0a0a;
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgb(0 0 0 / 40%);
+  }
+
+  .rd-gate__label {
+    font-size: clamp(1.35rem, 3.2vw, 2.5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  .rd-gate__sub { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; opacity: 0.85; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .rd-gate__door { animation: rd-gate-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; animation-delay: calc(0.12s + var(--i, 0) * 0.09s); }
+  }
+
+  @keyframes rd-gate-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ------------------------------------------- art mode: built from our tees */
+  .rd-gate--art {
+    background: radial-gradient(130% 100% at 50% 32%, #272727 0%, #111 55%, #050505 100%);
+  }
+
+  .rd-gate--art .rd-gate__media { display: none; }
+
+  .rd-gate__bgword {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-size: clamp(3rem, 13vw, 12rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #fff;
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .rd-gate__grain {
+    position: absolute;
+    inset: -50%;
+    z-index: 2;
+    opacity: 0.13;
+    pointer-events: none;
+    background-image: repeating-conic-gradient(rgb(255 255 255 / 9%) 0% 25%, transparent 0% 50%);
+    background-size: 3px 3px;
+    animation: rd-grain 6s steps(6) infinite;
+  }
+
+  @keyframes rd-grain {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-3%, 2%); }
+    40% { transform: translate(2%, -3%); }
+    60% { transform: translate(-2%, -2%); }
+    80% { transform: translate(3%, 3%); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .rd-gate--art .rd-gate__doors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+  }
+
+  .rd-gate--art .rd-gate__door {
+    position: relative;
+    justify-content: flex-end;
+    gap: clamp(1rem, 3vh, 2rem);
+    padding: clamp(1.25rem, 4vh, 3rem) 0.75rem clamp(1.75rem, 6vh, 4rem);
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .rd-gate--art .rd-gate__door + .rd-gate__door::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14%;
+    bottom: 14%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgb(255 255 255 / 22%), transparent);
+  }
+
+  .rd-gate__spot {
+    position: absolute;
+    left: 50%;
+    top: 44%;
+    width: min(86%, 520px);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgb(255 255 255 / 14%) 0%, transparent 62%);
+    pointer-events: none;
+    opacity: 0.85;
+    transition: opacity 0.35s ease;
+  }
+
+  .rd-gate__tee {
+    width: min(74%, 360px);
+    max-height: 52vh;
+    object-fit: contain;
+    margin-top: auto;
+    filter: drop-shadow(0 34px 30px rgb(0 0 0 / 55%));
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .rd-gate--art .rd-gate__door:hover,
+  .rd-gate--art .rd-gate__door:focus-visible {
+    transform: none;
+    box-shadow: none;
+    background: transparent;
+    color: #fff;
+  }
+
+  .rd-gate--art .rd-gate__door:hover .rd-gate__tee { transform: translateY(-12px) scale(1.03); }
+  .rd-gate--art .rd-gate__door:hover .rd-gate__spot { opacity: 1; }
+
+  .rd-gate--art .rd-gate__label {
+    position: relative;
+    padding: 0.55rem 1.7rem;
+    border: 3px solid currentcolor;
+    font-size: clamp(1.3rem, 3.4vw, 2.5rem);
+    transition: background 0.22s ease, color 0.22s ease;
+  }
+
+  .rd-gate--art .rd-gate__door:hover .rd-gate__label { background: #fff; color: #0a0a0a; }
+  .rd-gate--art .rd-gate__sub { margin-top: 0.45rem; }
+
+  /* -------------------------------------------------------------- coming soon */
+  .rd-gate__soon {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: rgb(0 0 0 / 62%);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .rd-gate__soon.is-open { opacity: 1; }
+  .rd-gate__soon[hidden] { display: none; }
+
+  .rd-gate__soon-card {
+    width: min(92vw, 460px);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    background: #fff;
+    color: #0a0a0a;
+    border: 3px solid #0a0a0a;
+    text-align: center;
+    transform: translateY(10px);
+    transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .rd-gate__soon.is-open .rd-gate__soon-card { transform: translateY(0); }
+
+  .rd-gate__soon-kicker {
+    margin: 0 0 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #666;
+  }
+
+  .rd-gate__soon-title {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .rd-gate__soon-body { margin: 0 0 1.4rem; font-size: 0.95rem; line-height: 1.5; color: #444; }
+
+  .rd-gate__soon-close {
+    padding: 0.8rem 2rem;
+    border: 3px solid #0a0a0a;
+    background: #0a0a0a;
+    color: #fff;
+    font: inherit;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .rd-gate__soon-close:hover { background: #fff; color: #0a0a0a; }
+
+  /* ------------------------------------------------- what sits behind the gate */
+  .behind { padding: clamp(2.5rem, 8vw, 6rem) clamp(1rem, 5vw, 5rem); }
+
+  .behind h2 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.6rem, 5vw, 3rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .behind p { margin: 0 0 1.5rem; max-width: 46ch; color: #444; line-height: 1.6; }
+  .behind ul { margin: 0 0 2rem; padding-inline-start: 1.1rem; color: #444; line-height: 1.9; }
+
+  .behind button {
+    padding: 0.85rem 2rem;
+    border: 3px solid #0a0a0a;
+    background: #0a0a0a;
+    color: #fff;
+    font: inherit;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .behind button:hover { background: #fff; color: #0a0a0a; }
+
+  /* ----------------------------------------------------------------- try panel */
+  .try {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    background: #fff;
+    border: 2px solid #0a0a0a;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 25%);
+  }
+
+  .try span { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  .try label,
+  .try button {
+    padding: 0.45rem 0.8rem;
+    border: 2px solid #0a0a0a;
+    background: #0a0a0a;
+    color: #fff;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .try button { background: #fff; color: #0a0a0a; }
+  .try input { display: none; }
+
+  @media (max-width: 749px) {
+    .rd-gate--photo .rd-gate__doors {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      padding-bottom: clamp(1.75rem, 8vh, 3.5rem);
+    }
+
+    .rd-gate--photo .rd-gate__door { padding-block: 0.75rem; }
+    .rd-gate__tee { width: min(88%, 220px); max-height: 40vh; }
+    .try { left: 1rem; right: 1rem; justify-content: center; }
+    .try span { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <nav class="bar__nav">
+    <a href="#" data-nav="men">Men</a>
+    <a href="#" data-nav="soon" data-title="Women">Women</a>
+    <a href="#" data-nav="soon" data-title="Accessories">Accessories</a>
+  </nav>
+  <div class="bar__logo">Reaching Dreams</div>
+</header>
+
+<section class="rd-gate rd-gate--art" id="gate">
+  <span class="rd-gate__bgword" aria-hidden="true">Reaching Dreams</span>
+  <span class="rd-gate__grain" aria-hidden="true"></span>
+
+  <div class="rd-gate__media" aria-hidden="true">
+    <img class="rd-gate__img" id="gateImg" alt="">
+    <span class="rd-gate__scrim"></span>
+  </div>
+
+  <div class="rd-gate__doors">
+    <a class="rd-gate__door" href="#" style="--i:0" data-action="enter">
+      <span class="rd-gate__spot" aria-hidden="true"></span>
+      <img class="rd-gate__tee" src="tee-men.png" alt="" width="682" height="875">
+      <span class="rd-gate__label">Men</span>
+      <span class="rd-gate__sub">Shop all</span>
+    </a>
+    <a class="rd-gate__door" href="#" style="--i:1" data-action="soon" data-title="Women"
+       data-body="Women's drops are on the way. Follow us to hear it first.">
+      <span class="rd-gate__spot" aria-hidden="true"></span>
+      <img class="rd-gate__tee" src="tee-women.png" alt="" width="682" height="875">
+      <span class="rd-gate__label">Women</span>
+      <span class="rd-gate__sub">Coming soon</span>
+    </a>
+  </div>
+
+  <div class="rd-gate__soon" id="soon" hidden>
+    <div class="rd-gate__soon-card" role="dialog" aria-modal="true" aria-labelledby="soonTitle">
+      <p class="rd-gate__soon-kicker">Coming soon</p>
+      <p class="rd-gate__soon-title" id="soonTitle"></p>
+      <p class="rd-gate__soon-body" id="soonBody"></p>
+      <button class="rd-gate__soon-close" id="soonClose" type="button">Back</button>
+    </div>
+  </div>
+</section>
+
+<div class="behind" id="behind" hidden>
+  <h2>You are through the gate</h2>
+  <p>On the real store this is where the whole home page appears, exactly as it is today:</p>
+  <ul>
+    <li>3D product hero with the cut-out tees</li>
+    <li>Free shipping / COD / easy returns strip</li>
+    <li>Shop by category tiles</li>
+    <li>New Drops and Bestsellers</li>
+    <li>Drop countdown, brand story, email signup</li>
+  </ul>
+  <button type="button" id="again">Show the gate again</button>
+</div>
+
+<div class="try">
+  <span>Have a real photo?</span>
+  <label>Try it<input type="file" id="pick" accept="image/*"></label>
+  <button type="button" id="reset">Reset</button>
+</div>
+
+<script>
+  const gate = document.getElementById('gate');
+  const soon = document.getElementById('soon');
+  const soonTitle = document.getElementById('soonTitle');
+  const soonBody = document.getElementById('soonBody');
+  const behind = document.getElementById('behind');
+  const gateImg = document.getElementById('gateImg');
+
+  function openSoon(title, body) {
+    soonTitle.textContent = title || '';
+    soonBody.textContent = body || 'We are working on it. Check back shortly.';
+    soon.hidden = false;
+    requestAnimationFrame(() => soon.classList.add('is-open'));
+    document.getElementById('soonClose').focus();
+  }
+
+  function closeSoon() {
+    soon.classList.remove('is-open');
+    soon.hidden = true;
+  }
+
+  function enter() {
+    gate.classList.add('is-leaving');
+    behind.hidden = false;
+    setTimeout(() => gate.classList.add('is-passed'), 460);
+  }
+
+  document.querySelectorAll('[data-action]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (el.dataset.action === 'soon') openSoon(el.dataset.title, el.dataset.body);
+      else enter();
+    });
+  });
+
+  document.querySelectorAll('[data-nav]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (el.dataset.nav === 'soon') {
+        if (gate.classList.contains('is-passed')) {
+          gate.classList.remove('is-passed', 'is-leaving');
+          behind.hidden = true;
+        }
+        openSoon(el.dataset.title);
+      } else {
+        enter();
+      }
+    });
+  });
+
+  document.getElementById('soonClose').addEventListener('click', closeSoon);
+  soon.addEventListener('click', (e) => { if (e.target === soon) closeSoon(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !soon.hidden) closeSoon(); });
+
+  document.getElementById('again').addEventListener('click', () => {
+    gate.classList.remove('is-passed', 'is-leaving');
+    behind.hidden = true;
+    window.scrollTo({ top: 0 });
+  });
+
+  document.getElementById('pick').addEventListener('change', (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    gateImg.src = URL.createObjectURL(file);
+    gate.classList.remove('rd-gate--art');
+    gate.classList.add('rd-gate--photo');
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    gateImg.removeAttribute('src');
+    gate.classList.remove('rd-gate--photo', 'is-passed', 'is-leaving');
+    gate.classList.add('rd-gate--art');
+    behind.hidden = true;
+    closeSoon();
+  });
+</script>
+
+</body>
+</html>
