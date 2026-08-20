@@ -254,6 +254,54 @@
   .rd-gate--art .rd-gate__door:hover .rd-gate__label { background: #fff; color: #0a0a0a; }
   .rd-gate--art .rd-gate__sub { margin-top: 0.45rem; }
 
+  /* --------------------------------- fit mode: whole photo on white, uncropped */
+  .rd-gate--fit { background: #fff; color: #0a0a0a; }
+  .rd-gate--fit .rd-gate__media { display: block; }
+  .rd-gate--fit .rd-gate__img { object-fit: contain; }
+  .rd-gate--fit .rd-gate__scrim,
+  .rd-gate--fit .rd-gate__grain,
+  .rd-gate--fit .rd-gate__tee,
+  .rd-gate--fit .rd-gate__spot { display: none; }
+
+  .rd-gate--fit .rd-gate__bgword {
+    z-index: -1;
+    -webkit-text-stroke: 1.5px #0a0a0a;
+    opacity: 0.07;
+  }
+
+  .rd-gate--fit .rd-gate__doors {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: clamp(1rem, 5vw, 5rem);
+  }
+
+  .rd-gate--fit .rd-gate__door {
+    justify-content: center;
+    gap: 0.15rem;
+    padding: clamp(0.6rem, 1.4vw, 0.95rem) clamp(1.4rem, 3vw, 2.6rem);
+    border: 3px solid #0a0a0a;
+    background: #0a0a0a;
+    color: #fff;
+    backdrop-filter: none;
+  }
+
+  .rd-gate--fit .rd-gate__door:hover,
+  .rd-gate--fit .rd-gate__door:focus-visible {
+    background: #fff;
+    color: #0a0a0a;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgb(0 0 0 / 22%);
+  }
+
+  .rd-gate--fit .rd-gate__label {
+    padding: 0;
+    border: 0;
+    font-size: clamp(1.35rem, 3.2vw, 2.5rem);
+  }
+
+  .rd-gate--fit .rd-gate__sub { opacity: 0.75; }
+
   /* -------------------------------------------------------------- coming soon */
   .rd-gate__soon {
     position: absolute;
@@ -391,6 +439,20 @@
 
     .rd-gate--photo .rd-gate__door { padding-block: 0.75rem; }
     .rd-gate__tee { width: min(88%, 220px); max-height: 40vh; }
+
+    /* keep the buttons off the photo on a phone */
+    .rd-gate--fit .rd-gate__media { bottom: 6rem; }
+
+    .rd-gate--fit .rd-gate__doors {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      padding-bottom: clamp(1.25rem, 4vh, 2rem);
+    }
+
+    .rd-gate--fit .rd-gate__door { padding-block: 0.7rem; }
+
     .try { left: 1rem; right: 1rem; justify-content: center; }
     .try span { display: none; }
   }
@@ -407,12 +469,12 @@
   <div class="bar__logo">Reaching Dreams</div>
 </header>
 
-<section class="rd-gate rd-gate--art" id="gate">
+<section class="rd-gate rd-gate--fit" id="gate">
   <span class="rd-gate__bgword" aria-hidden="true">Reaching Dreams</span>
   <span class="rd-gate__grain" aria-hidden="true"></span>
 
   <div class="rd-gate__media" aria-hidden="true">
-    <img class="rd-gate__img" id="gateImg" alt="">
+    <img class="rd-gate__img" id="gateImg" src="hero-couple.jpg" alt="">
     <span class="rd-gate__scrim"></span>
   </div>
 
@@ -456,8 +518,9 @@
 </div>
 
 <div class="try">
-  <span>Have a real photo?</span>
-  <label>Try it<input type="file" id="pick" accept="image/*"></label>
+  <span>Preview</span>
+  <button type="button" id="mode">Tees version</button>
+  <label>Another photo<input type="file" id="pick" accept="image/*"></label>
   <button type="button" id="reset">Reset</button>
 </div>
 
@@ -521,18 +584,29 @@
     window.scrollTo({ top: 0 });
   });
 
+  const modeBtn = document.getElementById('mode');
+
+  function setMode(mode) {
+    gate.classList.remove('rd-gate--fit', 'rd-gate--art');
+    gate.classList.add('rd-gate--' + mode);
+    modeBtn.textContent = mode === 'fit' ? 'Tees version' : 'Photo version';
+  }
+
+  modeBtn.addEventListener('click', () => {
+    setMode(gate.classList.contains('rd-gate--fit') ? 'art' : 'fit');
+  });
+
   document.getElementById('pick').addEventListener('change', (e) => {
     const file = e.target.files && e.target.files[0];
     if (!file) return;
     gateImg.src = URL.createObjectURL(file);
-    gate.classList.remove('rd-gate--art');
-    gate.classList.add('rd-gate--photo');
+    setMode('fit');
   });
 
   document.getElementById('reset').addEventListener('click', () => {
-    gateImg.removeAttribute('src');
-    gate.classList.remove('rd-gate--photo', 'is-passed', 'is-leaving');
-    gate.classList.add('rd-gate--art');
+    gateImg.src = 'hero-couple.jpg';
+    gate.classList.remove('is-passed', 'is-leaving');
+    setMode('fit');
     behind.hidden = true;
     closeSoon();
   });
